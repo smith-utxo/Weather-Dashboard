@@ -4,17 +4,46 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel = "stylesheet" href="./assets/style.css">
   <title>weather-dashboard</title>
 </head>
-<body>
+<body class="flex-column min-100-vh">
+  <header class="hero">
+    <h1 class="application-title">Weather Dashboard</h1>
+  </header>
 
-<h1>test</h1>
+ <main class="flex-row justify-space-between">
+  <div class="col-12 col-md-4">
+    <div class="card">
+      <h3 class="card-header">Search for a City</h3>
 
-  
+      <form id="user-form" class="card-body">
+        <label class="form-label" for="city">City</label>
+        <input name="city" id="city" type="text" autofocus="true">
+        <button type="submit" class="btn">Search</button>
+      </form>
 
+      <div class="card">
+          <div class="card-body" id="city-buttons">
+            <button class="btn" data-city="austin">Austin</button>
+            <button class="btn" data-city="chicago">Chicago</button>
+            <button class="btn" data-city="new york">New York</button>
+            <button class="btn" data-city="orlando">Orlando</button>
+            <button class="btn" data-city="san fransisco">San Francisco</button>
+            <button class="btn" data-city="seattle">Seattle</button>
+            <button class="btn" data-city="denver">Denver</button>
+            <button class="btn" data-city="atlanta">Atlanta</button>
+          </div>
+      </div>
+    </div>
+  </div>
 
+      <div class="col-12 col-md-8">
+         <h2>Lorem ipsum dolor sit.</h2>
+      </div>
+ </main>
 
-<script src="./script.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
