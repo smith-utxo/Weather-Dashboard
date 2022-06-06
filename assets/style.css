@@ -13,6 +13,10 @@
   box-sizing: border-box;
 }
 
+h3 {
+  margin-top: 0;
+}
+
 .hero {
   padding: 2% 4%;
   background-image: linear-gradient(to right, rgb(38, 0, 255) , rgb(187, 0, 255));
@@ -78,4 +82,35 @@
   background-color: var(--light-dark);
   box-shadow: 3px 3px var(--dark);
   transform: translate(-1px, -1px);
+}
+
+.whatisthis {
+  border: 2px solid red; 
+}
+
+.flexbox {
+  display: flex; 
+  margin-top: 10%;
+}
+
+.heremeroar {
+  border: 2px solid green; 
+}
+
+.cardheader-forecast {
+  color: var(--primary);
+  background-color: var(--dark);
+}
+
+.cardbody-forecast {
+  padding: 2.5%; 
+  margin-top: 0 !important;
+  display: relative; 
+  top: 0px; 
+
+}
+
+.flexbox {
+  display: flex; 
+  justify-content: space-around; 
 }
