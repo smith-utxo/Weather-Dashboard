@@ -4,6 +4,8 @@ var citiesBtnEl = document.querySelector('#city-buttons');
 var forecastEl = document.querySelector('#forecast');
 var todayDateEl = document.querySelector('#today-date');
 var todayTempEl = document.querySelector('#today-temp');
+var todayHumidityEl = document.querySelector('#today-humidity');
+var todayWindEl = document.querySelector('#today-wind');
 
 var dateOneEl = document.querySelector('#date1');
 var dateTwoEl = document.querySelector('#date2');
@@ -147,11 +149,13 @@ var getWeatherDetails = function(data) {
     wind.push(data.daily[i].wind_speed);
     icon.push(data.daily[i].weather[0].icon);
   }
+  todayHumidityEl.textContent = "Humidity: " + humidity[0] + " %";
   HumidityOneEl.textContent = "Humidity: " + humidity[1] + " %";
   HumidityTwoEl.textContent = "Humidity: " + humidity[2] + " %"; 
   HumidityThreeEl.textContent = "Humidity: " + humidity[3] + " %";
   HumidityFourEl.textContent = "Humidity: " + humidity[4] + " %";
 
+  todayWindEl.textContent = "Wind: " + wind[0] + " MPH";
   windOneEl.textContent = "Wind: " + wind[1] + " MPH";
   windTwoEl.textContent = "Wind: " + wind[2] + " MPH";
   windThreeEl.textContent = "Wind: " + wind[3] + " MPH";
