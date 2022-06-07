@@ -3,6 +3,12 @@ var cityInputEl = document.querySelector('#city');
 var citiesBtnEl = document.querySelector('#city-buttons'); 
 var forecastEl = document.querySelector('#forecast');
 var todayDateEl = document.querySelector('#today-date');
+var todayTempEl = document.querySelector('#today-temp');
+var dateOneTempEl = document.querySelector('#temp1');
+var dateTwoTempEl = document.querySelector('#temp2');
+var dateThreeTempEl = document.querySelector('#temp3');
+var dateFourTempEl = document.querySelector('#temp4');
+
 
 var dateOneEl = document.querySelector('#date1');
 var dateTwoEl = document.querySelector('#date2');
@@ -102,6 +108,10 @@ var getCityWeather = function(lat, lon){
       maximumTemp.push((((data.daily[i].temp.max - 273.15) *1.8) + 32).toFixed(1));
     }
     maxTemp = maximumTemp;
-    console.log(maxTemp);
+    todayTempEl.textContent = "Temp: " + maxTemp[0] + " °F";
+    dateOneTempEl.textContent = "Temp: " + maxTemp[1] + " °F";
+    dateTwoTempEl.textContent = "Temp: " + maxTemp[2] + " °F";
+    dateThreeTempEl.textContent = "Temp: " + maxTemp[3] + " °F";
+    dateFourTempEl.textContent = "Temp: " + maxTemp[4] + " °F";
   }
  

@@ -105,7 +105,9 @@ h3 {
 .cardbody-forecast {
   padding: 2.5%; 
   margin-top: 0 !important;
-  display: relative; 
+  margin-right: 3px; 
+  display: block;
+  white-space: nowrap;  
   top: 0px; 
 
 }
