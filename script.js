@@ -5,7 +5,6 @@ var forecastEl = document.querySelector('#forecast');
 
 
 
-
 var formSubmitHandler = function(event) {
   //prevent page from refreshing 
   event.preventDefault(); 
@@ -27,8 +26,8 @@ var formSubmitHandler = function(event) {
 
 var getCityGeo = function (city) {
    //format openweather api url 
-  var apiOpenWeather = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=5&appid=24d67e043683f1a926063c455aa07dc3';
-    // my api key: 24d67e043683f1a926063c455aa07dc3 
+  var apiOpenWeather = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=5&appid=60f14806b4f9f5c6687cb7f52fc240ef';
+   
     fetch(apiOpenWeather)
     .then(function(response) {
       if (response.ok) { console.log(response);
@@ -51,13 +50,32 @@ var getCityGeo = function (city) {
 userFormEl.addEventListener('submit', formSubmitHandler); 
 
 var getCityWeather = function(lat, lon){
-  // my api key: 7854b2b95dde963504e5ec0faeb5cf6f
- var apiWeather = "https://api.openweathermap.org/data/3.0/onecall?lat=" + lat + "&lon=" + lon + "&appid=24d67e043683f1a926063c455aa07dc3 ";
+  
+ var apiWeather = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=60f14806b4f9f5c6687cb7f52fc240ef";
  fetch(apiWeather)
  .then(function(response) {
   if (response.ok) {console.log(response);
+    response.json().then(function(data){
+      convertData(data);
+      //console.log(data);
+      
+      //console.log(data.daily[0].dt);
+    })
 
   }
 
  })
 }
+
+  var convertData = function (data) {
+    var daily = data.daily; 
+    console.log(daily);
+    for (var i = 0; i < 5; i++){
+      var milliseconds = daily[i].dt * 1000; 
+      var dateObject = new Date(milliseconds);
+      var humanDateFormat = dateObject.toLocaleDateString(); 
+      console.log(humanDateFormat);
+    }
+
+
+  }
