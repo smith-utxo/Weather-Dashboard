@@ -30,6 +30,15 @@ var windTwoEl = document.querySelector('#wind2');
 var windThreeEl = document.querySelector('#wind3');
 var windFourEl = document.querySelector('#wind4');
 
+document.getElementById('austin').addEventListener("click", function(){getCityGeo('austin')});
+document.getElementById('chicago').addEventListener("click", function(){getCityGeo('chicago')});
+document.getElementById('new york').addEventListener("click", function(){getCityGeo('new york')});
+document.getElementById('orlando').addEventListener("click", function(){getCityGeo('orlando')});
+document.getElementById('san francisco').addEventListener("click", function(){getCityGeo('san francisco')});
+document.getElementById('seattle').addEventListener("click", function(){getCityGeo('seattle')});
+document.getElementById('denver').addEventListener("click", function(){getCityGeo('denver')});
+document.getElementById('atlanta').addEventListener("click", function(){getCityGeo('atlanta')});
+
 var globalDatesArray = []; 
 var maxTemp = []; 
 
@@ -38,22 +47,20 @@ var formSubmitHandler = function(event) {
   event.preventDefault(); 
 
   //retrieve value from input element
-  var cityName = cityInputEl.value.trim(); 
-  console.log(cityName);
-
-  if (cityName) {
+  var cityName = cityInputEl.value.trim().toUpperCase(); 
+  //if (cityName) {
     getCityGeo(cityName);
 
       //clear old content if any
       forecastEl.textContent = cityName; 
       cityInputEl.value = ""; 
-  } else {
-     alert("Please enter a city");
-  }
+  //} else {
+   //  alert("Please enter a city");
+  //}
 };
 
 var getCityGeo = function (city) {
-  
+  forecastEl.textContent = city.toUpperCase(); 
    //format openweather api url 
   var apiOpenWeather = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=5&appid=60f14806b4f9f5c6687cb7f52fc240ef';
    
@@ -68,11 +75,11 @@ var getCityGeo = function (city) {
 
       })
       } else {
-        alert('Error: GitHub User Not Found');
+        alert('Error: City Not Found');
       }
     })
     .catch(function(error) {
-      alert('Unable to connect to GitHub');
+      alert('Unable to connect to OpenWeather');
     });
 };
 
