@@ -2,8 +2,15 @@ var userFormEl = document.querySelector('#user-form');
 var cityInputEl = document.querySelector('#city');
 var citiesBtnEl = document.querySelector('#city-buttons'); 
 var forecastEl = document.querySelector('#forecast');
+var todayDateEl = document.querySelector('#today-date');
 
+var dateOneEl = document.querySelector('#date1');
+var dateTwoEl = document.querySelector('#date2');
+var dateThreeEl = document.querySelector('#date3');
+var dateFourEl = document.querySelector('#date4');
 
+var globalDatesArray = []; 
+var maxTemp = []; 
 
 var formSubmitHandler = function(event) {
   //prevent page from refreshing 
@@ -17,7 +24,7 @@ var formSubmitHandler = function(event) {
     getCityGeo(cityName);
 
       //clear old content if any
-      forecastEl.textContent = ""; 
+      forecastEl.textContent = cityName; 
       cityInputEl.value = ""; 
   } else {
      alert("Please enter a city");
@@ -25,6 +32,7 @@ var formSubmitHandler = function(event) {
 };
 
 var getCityGeo = function (city) {
+  
    //format openweather api url 
   var apiOpenWeather = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=5&appid=60f14806b4f9f5c6687cb7f52fc240ef';
    
@@ -56,9 +64,8 @@ var getCityWeather = function(lat, lon){
  .then(function(response) {
   if (response.ok) {console.log(response);
     response.json().then(function(data){
-      convertData(data);
-      //console.log(data);
-      
+      convertDate(data);
+      convertTemp(data);
       //console.log(data.daily[0].dt);
     })
 
@@ -67,15 +74,34 @@ var getCityWeather = function(lat, lon){
  })
 }
 
-  var convertData = function (data) {
+  var convertDate = function (data) {
     var daily = data.daily; 
+    var datesArray = []; 
     console.log(daily);
     for (var i = 0; i < 5; i++){
       var milliseconds = daily[i].dt * 1000; 
       var dateObject = new Date(milliseconds);
       var humanDateFormat = dateObject.toLocaleDateString(); 
-      console.log(humanDateFormat);
+      datesArray.push(humanDateFormat); 
+
     }
 
-
+    globalDatesArray =  datesArray;
+    todayDateEl.textContent = '(' + globalDatesArray[0] + ')'; 
+    dateOneEl.textContent = globalDatesArray[1];
+    dateTwoEl.textContent = globalDatesArray[2];
+    dateThreeEl.textContent = globalDatesArray[3];
+    dateFourEl.textContent = globalDatesArray[4];
+    console.log(globalDatesArray);
   }
+
+  var convertTemp = function (data){
+    console.log(data.daily[0].temp.max);
+    var maximumTemp = []; 
+    for (var i = 0; i < 5; i++){
+      maximumTemp.push((((data.daily[i].temp.max - 273.15) *1.8) + 32).toFixed(1));
+    }
+    maxTemp = maximumTemp;
+    console.log(maxTemp);
+  }
+ 
