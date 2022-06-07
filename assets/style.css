@@ -31,8 +31,8 @@ h3 {
 }
 
 .card {
-  margin: 0 0 20px 0;
-  border: 3px solid var(--dark);
+  margin: 10px 10px 20px 0;
+  border: 2px solid var(--dark);
   border-radius: var(--border-radius);
 }
 
@@ -45,6 +45,7 @@ h3 {
 
 .card-body {
   padding: 2.5%;
+  
 }
 
 /* FORM */
@@ -85,7 +86,8 @@ h3 {
 }
 
 .whatisthis {
-  border: 2px solid red; 
+  border: 2px solid rgb(252, 252, 252); 
+  
 }
 
 .flexbox {
@@ -93,8 +95,11 @@ h3 {
   margin-top: 10%;
 }
 
-.heremeroar {
-  border: 2px solid green; 
+
+.today-box {
+  margin: 5px; 
+  padding: 5px; 
+  border: 2px solid black; 
 }
 
 .cardheader-forecast {

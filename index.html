@@ -13,7 +13,7 @@
     <h1 class="application-title">Weather Dashboard</h1>
   </header>
 
- <main class="flex-row justify-space-between whatisthis">
+ <main class="flex-row flex-wrap whatisthis">
   <div class="col-sm-12 col-md-4 heremeroar">
     <div class="card">
       <h3 class="card-header">Search for a City</h3>
@@ -39,30 +39,44 @@
     </div>
   </div>
 
-      <div class="col-lg-8 col-sm-12">
+      <div class="col-lg-4 col-sm-6 d-block today-box">
          <h2 class="weather" id="forecast">City</h2>
          <h3 class="date" id="today-date"></h3>
          <h6 class="temp" id="today-temp"></h6>
       </div>
-      <div class="flexbox">
-        <div class="card">
-          <h3 class="cardheader-forecast" id="date1">03/31/2024</h3>
-          <div class="cardbody-forecast" id="temp1">PlaceHolder</div>
+      
+      <div class="col-lg-8">
+        <div class="col-lg-2 card">
+          <h3 class="cardheader-forecast" id="date1">01/01/2022</h3>
+          <img class="cardbody-forecast" id="icon1"></span>
+          <div class="cardbody-forecast" id="temp1"></div>
+          <div class="cardbody-forecast" id="humidity1"></div>
+          <div class="cardbody-forecast" id="wind1"></div>
         </div>
-        <div class="card">
-          <h3 class="cardheader-forecast" id="date2">03/31/2024</h3>
-          <div class="cardbody-forecast" id="temp2">PlaceHolder</div>
+        <div class="col-lg-2 card">
+          <h3 class="cardheader-forecast" id="date2">01/02/2022</h3>
+          <img class="cardbody-forecast" id="icon2"></span>
+          <div class="cardbody-forecast" id="temp2"></div>
+          <div class="cardbody-forecast" id="humidity2"></div>
+          <div class="cardbody-forecast" id="wind2"></div>
         </div>
-        <div class="card">
-          <h3 class="cardheader-forecast" id="date3">03/31/2024</h3>
-          <div class="cardbody-forecast" id="temp3">PlaceHolder</div>
+        <div class="col-lg-2 card">
+          <h3 class="cardheader-forecast" id="date3">01/03/2022</h3>
+          <img class="cardbody-forecast" id="icon3"></span>
+          <div class="cardbody-forecast" id="temp3"></div>
+          <div class="cardbody-forecast" id="humidity3"></div>
+          <div class="cardbody-forecast" id="wind3"></div>
         </div>
-        <div class="card">
-          <h3 class="cardheader-forecast" id="date4">03/31/2024</h3>
-          <div class="cardbody-forecast" id="temp4">PlaceHolder</div>
+        <div class="col-lg-2 card">
+          <h3 class="cardheader-forecast" id="date4">01/04/2022</h3>
+          <img class="cardbody-forecast" id="icon4"></span>
+          <div class="cardbody-forecast" id="temp4"></div>
+          <div class="cardbody-forecast" id="humidity4"></div>
+          <div class="cardbody-forecast" id="wind4"></div>
+
         </div>
       </div>
-
+    
  </main>
 
   <script src="./script.js"></script>
