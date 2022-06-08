@@ -63,15 +63,16 @@ var formSubmitHandler = function(event) {
 
   //retrieve value from input element
   var cityName = cityInputEl.value.trim().toUpperCase(); 
-  //if (cityName) {
+  
+  //pass CityName to GEO function
     getCityGeo(cityName);
 
       //clear old content if any
       forecastEl.textContent = cityName; 
       cityInputEl.value = ""; 
-  //} else {
-   //  alert("Please enter a city");
-  //}
+    
+      //Save City to Local Storage 
+      localStorage.setItem("city", cityName);
 };
 
 var getCityGeo = function (city) {
@@ -200,8 +201,7 @@ var getWeatherDetails = function(data) {
   
 }
  
-// UV index
-//1-2 Green; 3-5 Yellow; 6-7 Orange; 8-10 Red; 11+ Purple-Red; 
+//UV Index; 1-2 Green; 3-5 Yellow; 6-7 Orange; 8-10 Red; 11+ Purple; 
 var uvIndexColor = function(uvi) {
     if (uvi < 3){
     todayUV.className = 'green';
@@ -219,3 +219,7 @@ var uvIndexColor = function(uvi) {
         todayUV.className = 'purple';
       }
 }
+
+//Check localStorage for City and pass to function if present
+var citySaved = localStorage.getItem('city');
+getCityGeo(citySaved);
