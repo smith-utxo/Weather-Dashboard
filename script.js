@@ -6,31 +6,44 @@ var todayDateEl = document.querySelector('#today-date');
 var todayTempEl = document.querySelector('#today-temp');
 var todayHumidityEl = document.querySelector('#today-humidity');
 var todayWindEl = document.querySelector('#today-wind');
+var todayIconEl = document.querySelector('#today-icon');
+var todayUV = document.querySelector('#today-uv');
 
 var dateOneEl = document.querySelector('#date1');
 var dateTwoEl = document.querySelector('#date2');
 var dateThreeEl = document.querySelector('#date3');
 var dateFourEl = document.querySelector('#date4');
+var dateFiveEl = document.querySelector('#date5');
 
 var iconOneEl = document.querySelector('#icon1');
 var iconTwoEl = document.querySelector('#icon2');
 var iconThreeEl = document.querySelector('#icon3');
 var iconFourEl = document.querySelector('#icon4');
+var iconFiveEl = document.querySelector('#icon5');
 
 var tempOneEl = document.querySelector('#temp1');
 var tempTwoEl = document.querySelector('#temp2');
 var tempThreeEl = document.querySelector('#temp3');
 var tempFourEl = document.querySelector('#temp4');
+var tempFiveEl = document.querySelector('#temp5');
 
 var HumidityOneEl = document.querySelector('#humidity1');
 var HumidityTwoEl = document.querySelector('#humidity2');
 var HumidityThreeEl = document.querySelector('#humidity3');
 var HumidityFourEl = document.querySelector('#humidity4');
+var HumidityFiveEl = document.querySelector('#humidity5');
 
 var windOneEl = document.querySelector('#wind1');
 var windTwoEl = document.querySelector('#wind2');
 var windThreeEl = document.querySelector('#wind3');
 var windFourEl = document.querySelector('#wind4');
+var windFiveEl = document.querySelector('#wind5');
+
+var uvOneEl = document.querySelector('#uv1');
+var uvTwoEl = document.querySelector('#uv2');
+var uvThreeEl = document.querySelector('#uv3');
+var uvFourEl = document.querySelector('#uv4');
+var uvFiveEl = document.querySelector('#uv5');
 
 document.getElementById('austin').addEventListener("click", function(){getCityGeo('austin')});
 document.getElementById('chicago').addEventListener("click", function(){getCityGeo('chicago')});
@@ -109,7 +122,7 @@ var getCityWeather = function(lat, lon){
     var daily = data.daily; 
     var datesArray = []; 
     console.log(daily);
-    for (var i = 0; i < 5; i++){
+    for (var i = 0; i <= 5; i++){
       var milliseconds = daily[i].dt * 1000; 
       var dateObject = new Date(milliseconds);
       var humanDateFormat = dateObject.toLocaleDateString(); 
@@ -123,13 +136,14 @@ var getCityWeather = function(lat, lon){
     dateTwoEl.textContent = globalDatesArray[2];
     dateThreeEl.textContent = globalDatesArray[3];
     dateFourEl.textContent = globalDatesArray[4];
+    dateFiveEl.textContent = globalDatesArray[5]; 
     console.log(globalDatesArray);
 }
 
   var convertTemp = function (data){
     console.log(data.daily[0].temp.max);
     var maximumTemp = []; 
-    for (var i = 0; i < 5; i++){
+    for (var i = 0; i <= 5; i++){
       maximumTemp.push((((data.daily[i].temp.max - 273.15) *1.8) + 32).toFixed(1));
     }
     maxTemp = maximumTemp;
@@ -138,35 +152,49 @@ var getCityWeather = function(lat, lon){
     tempTwoEl.textContent = "Temp: " + maxTemp[2] + " °F";
     tempThreeEl.textContent = "Temp: " + maxTemp[3] + " °F";
     tempFourEl.textContent = "Temp: " + maxTemp[4] + " °F";
+    tempFiveEl.textContent = "Temp: " + maxTemp[5] + " °F";
 }
 
 var getWeatherDetails = function(data) {
   var humidity = []; 
   var wind = []; 
   var icon = []; 
-  for (var i = 1; i <= 5; i++){
+  var uvi = []; 
+  for (var i = 0; i <= 5; i++){
     humidity.push(data.daily[i].humidity);
     wind.push(data.daily[i].wind_speed);
     icon.push(data.daily[i].weather[0].icon);
+    uvi.push(data.daily[i].uvi);
+
   }
   todayHumidityEl.textContent = "Humidity: " + humidity[0] + " %";
   HumidityOneEl.textContent = "Humidity: " + humidity[1] + " %";
   HumidityTwoEl.textContent = "Humidity: " + humidity[2] + " %"; 
   HumidityThreeEl.textContent = "Humidity: " + humidity[3] + " %";
   HumidityFourEl.textContent = "Humidity: " + humidity[4] + " %";
+  HumidityFiveEl.textContent = "Humidity: " + humidity[5] + " %";
 
   todayWindEl.textContent = "Wind: " + wind[0] + " MPH";
   windOneEl.textContent = "Wind: " + wind[1] + " MPH";
   windTwoEl.textContent = "Wind: " + wind[2] + " MPH";
   windThreeEl.textContent = "Wind: " + wind[3] + " MPH";
   windFourEl.textContent = "Wind: " + wind[4] + " MPH";
-
+  windFiveEl.textContent = "Wind: " + wind[5] + " MPH";
   
-  console.log(icon);
-
+  
+  todayIconEl.setAttribute('src','http://openweathermap.org/img/wn/' + icon[0] + ".png");
   iconOneEl.setAttribute('src','http://openweathermap.org/img/wn/' + icon[1] + ".png");
   iconTwoEl.setAttribute('src', 'http://openweathermap.org/img/wn/' + icon[2] + ".png");
   iconThreeEl.setAttribute('src', 'http://openweathermap.org/img/wn/' + icon[3] + ".png"); 
   iconFourEl.setAttribute('src', 'http://openweathermap.org/img/wn/' + icon[4] + ".png"); 
+  iconFiveEl.setAttribute('src', 'http://openweathermap.org/img/wn/' + icon[5] + ".png"); 
+
+  todayUV.textContent = "UV Index: " + uvi[0];
+  uvOneEl.textContent = "UV Index: " + uvi[1];
+  uvTwoEl.textContent = "UV Index: " + uvi[2]; 
+  uvThreeEl.textContent = "UV Index: " + uvi[3]; 
+  uvFourEl.textContent = "UV Index: " + uvi[4]; 
+  uvFiveEl.textContent = "UV Index: " + uvi[5]; 
+  
 }
  
