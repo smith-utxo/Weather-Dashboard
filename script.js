@@ -195,6 +195,27 @@ var getWeatherDetails = function(data) {
   uvThreeEl.textContent = "UV Index: " + uvi[3]; 
   uvFourEl.textContent = "UV Index: " + uvi[4]; 
   uvFiveEl.textContent = "UV Index: " + uvi[5]; 
+
+  uvIndexColor(data.daily[0].uvi);
   
 }
  
+// UV index
+//1-2 Green; 3-5 Yellow; 6-7 Orange; 8-10 Red; 11+ Purple-Red; 
+var uvIndexColor = function(uvi) {
+    if (uvi < 3){
+    todayUV.className = 'green';
+    }
+      else if (uvi < 6){
+       todayUV.className = 'yellow';
+      }
+      else if (uvi < 8){
+        todayUV.className = 'orange';
+      }
+      else if (uvi < 11){
+        todayUV.className = 'red'
+      }
+      else {
+        todayUV.className = 'purple';
+      }
+}

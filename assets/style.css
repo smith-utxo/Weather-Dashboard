@@ -122,3 +122,37 @@ h3 {
   justify-content: space-around; 
 }
 
+.green {
+  background-color: green; 
+  border-radius: 5px; 
+  margin-right: 75%; 
+}
+
+.yellow {
+  background-color: rgb(215, 215, 80); 
+  border-radius: 5px; 
+  margin-right: 75%; 
+}
+
+.orange {
+  background-color: orange; 
+  border-radius: 5px; 
+  margin-right: 75%; 
+}
+
+.red {
+  background-color: red; 
+  border-radius: 5px; 
+  margin-right: 75%; 
+}
+
+.purple {
+  background-color: purple; 
+  border-radius: 5px; 
+  margin-right: 75%; 
+}
+
+#today-uv {
+  color: white; 
+  font-weight: bolder; 
+}
