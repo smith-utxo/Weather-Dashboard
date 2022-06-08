@@ -78,7 +78,7 @@ var formSubmitHandler = function(event) {
 var getCityGeo = function (city) {
   forecastEl.textContent = city.toUpperCase(); 
    //format openweather api url 
-  var apiOpenWeather = 'http://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=5&appid=60f14806b4f9f5c6687cb7f52fc240ef';
+  var apiOpenWeather = 'https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&limit=5&appid=60f14806b4f9f5c6687cb7f52fc240ef';
    
     fetch(apiOpenWeather)
     .then(function(response) {
